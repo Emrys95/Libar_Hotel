@@ -1,0 +1,90 @@
+﻿@using System.Collections.Generic;
+@using Libar_Hotel.Models;
+
+
+@model List<ReservationRequest>
+
+@{
+    ViewBag.Title = "Zahtevi rezervacija";
+}
+
+<br>
+
+
+
+@if (TempData["Message"] != null)
+{
+
+    <div class="alert alert-success alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Obaveštenje</strong> <h2>@TempData["Message"]</h2>
+    </div>
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Zahtevi Rezervacija</h2>
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td class="text-center">Ime</td>
+
+                    <td class="text-center">Prezime</td>
+
+                    <td class="text-center">Datum rezervacije</td>
+
+                    <td class="text-center">Datum dolaska</td>
+
+                    <td class="text-center">Datum odlaska</td>
+
+                    <td class="text-center">Tip sobe</td>
+
+                    <td class="text-center">Tip usluge</td>
+
+                    <td class="text-center">Pogled</td>
+
+                    <td class="text-center">Broj osoba</td>
+
+                    <td class="text-center">Cena</td>
+
+                    <td class="text-center">Odobri/Odbaci</td>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var reservationRequest in Model)
+                {
+                    <tr>
+                        <td class="text-center">@reservationRequest.User.FirstName</td>
+
+                        <td class="text-center">@reservationRequest.User.LastName</td>
+
+                        <td class="text-center">@reservationRequest.ReservationDate</td>
+
+                        <td class="text-center">@reservationRequest.CheckInDate</td>
+
+                        <td class="text-center">@reservationRequest.CheckOutDate</td>
+
+                        <td class="text-center">@reservationRequest.RoomType.Name</td>
+
+                        <td class="text-center">@reservationRequest.ServiceType.Name</td>
+
+                        <td class="text-center">@reservationRequest.RoomView.Name</td>
+
+                        <td class="text-center">@reservationRequest.NumberOfGuests</td>
+                        <td class="text-center">@reservationRequest.Price &euro;</td>
+
+                        <td class="text-center">
+                            @Html.ActionLink("Odobri/Odbaci", "Show", "ReservationRequest", new { id = reservationRequest.Id }, new { @class = "btn btn-primary" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+

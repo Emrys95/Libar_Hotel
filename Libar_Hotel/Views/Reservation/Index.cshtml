@@ -1,0 +1,96 @@
+﻿@using System.Collections.Generic;
+@using Libar_Hotel.Models;
+
+
+@model List<Reservation>
+
+@{
+    ViewBag.Title = "Rezervacije";
+}
+
+<br>
+
+@if (TempData["Message"] != null)
+{
+
+    <div class="alert alert-success alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Obaveštenje</strong> <h2>@TempData["Message"]</h2>
+    </div>
+}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Rezervacije</h2>
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td class="text-center">Ime</td>
+
+                    <td class="text-center">Prezime</td>
+
+                    <td class="text-center">Datum rezervacije</td>
+
+                    <td class="text-center">Datum dolaska</td>
+
+                    <td class="text-center">Datum odlaska</td>
+
+
+                    <td class="text-center">Tip usluge</td>
+
+
+
+                    <td class="text-center">Broj osoba</td>
+
+                    <td class="text-center">Cena</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var reservation in Model)
+                {
+                    <tr>
+                        <td class="text-center">@reservation.User.FirstName</td>
+
+                        <td class="text-center">@reservation.User.LastName</td>
+
+                        <td class="text-center">@reservation.ReservationDate</td>
+
+                        <td class="text-center">@reservation.CheckInDate</td>
+
+                        <td class="text-center">@reservation.CheckOutDate</td>
+
+
+
+                        <td class="text-center">@reservation.ServiceType.Name</td>
+
+
+                        <td class="text-center">@reservation.NumberOfGuests</td>
+
+
+                        <td class="text-center">@reservation.Price &euro;</td>
+
+                        <td>
+                            @Html.ActionLink("Detalji", "Details", new { id = reservation.Id }, new { @class = "btn btn-warning btn-block" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Izmeni", "Edit", new { id = reservation.Id }, new { @class = "btn btn-primary btn-block" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Izbrisi", "DeleteDetails", new { id = reservation.Id }, new { @class = "btn btn-danger btn-block" })
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+

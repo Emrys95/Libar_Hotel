@@ -1,0 +1,75 @@
+﻿@model Libar_Hotel.Models.User
+    @{
+        ViewBag.Title = "Ukloni korisnika";
+    }
+
+    <br />
+
+    <div class="panel panel-danger">
+
+        <div class="panel panel-heading">
+            <h2>Podaci o Korisniku:</h2>
+        </div>
+
+
+        <div class="panel panel-body">
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AspNetUser.UserName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser.UserName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AspNetUser.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser.Email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BirthDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BirthDate)
+                </dd>
+
+            </dl>
+
+        </div>
+    </div>
+
+    <div class="alert alert-warning alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <h4><strong>Upozorenje!</strong></h4> 
+        <h5>Da li ste sigurni da zelite da izbrisete korisnika?</h5>
+    </div>
+
+    <div>
+        @using (Html.BeginForm("Delete", "User", new { id = Model.Id }, FormMethod.Post))
+        {
+            <input type="submit" name="submit" value="Izbriši" class="btn btn-danger"/>
+            @Html.ActionLink("Ne", "Index", "User", new { id = Model.Id }, new { @class = "btn btn-success btn-m" })
+        }
+       
+    </div>

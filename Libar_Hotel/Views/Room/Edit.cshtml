@@ -1,0 +1,59 @@
+﻿
+@model Libar_Hotel.Models.RoomViewModel
+
+@{
+    ViewBag.Title = "Izmeni sobu";
+}
+
+<br>
+<div class="panel panel-primary">
+    <div class="panel-heading"><h2>Izmeni sobu</h2></div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Edit", "Room", new { id = Model.Room.Id}, FormMethod.Post, new { id = "room" }))
+        {
+
+
+        <div class="form-group">
+
+            @Html.LabelFor(m => m.Room.Floor)
+            <br>
+            @Html.EditorFor(m => m.Room.Floor, new { htmlAttributes=new { @class="form-control"} })
+
+            @Html.ValidationMessageFor(m => m.Room.Floor)
+
+        </div>
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Room.RoomView.Name)
+                @Html.DropDownListFor(m => m.Room.RoomViewId, new SelectList(Model.RoomViews, "Id", "Name"), "Odaberite pogled", new { @class = "form-control" })
+
+            </div>
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Room.RoomStatus.Name)
+                @Html.DropDownListFor(m => m.Room.RoomStatusId, new SelectList(Model.RoomStatuses, "Id", "Name"), new { @class = "form-control" })
+
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.Room.RoomType.Name)
+                @Html.DropDownListFor(m => m.Room.RoomTypeId, new SelectList(Model.RoomTypes, "Id", "Name"), new { @class = "form-control" })
+                <br>
+            </div>
+
+            <input type="submit" class="btn btn-primary" name="Submit" value="Sačuvaj izmene">
+
+        }
+        <br> 
+        <div>
+                @Html.ActionLink("Nazad na listu soba", "Index", null, new { @class = "btn btn-info btn-m" })
+            </div>
+
+
+        </div>
+</div>
+
+
+

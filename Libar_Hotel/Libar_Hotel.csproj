@@ -1,0 +1,999 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3274CB49-2C7A-434A-A4E1-136740599C36}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Libar_Hotel</RootNamespace>
+    <AssemblyName>Libar_Hotel</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.0\lib\net451\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.0\lib\net451\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.0\lib\net451\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.0\lib\net451\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
+    <Compile Include="Controllers\ReservationRequestController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="Controllers\RoomTypeController.cs" />
+    <Compile Include="Controllers\ServiceTypeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Message.cs" />
+    <Compile Include="Migrations\201904121109397_Initial.cs" />
+    <Compile Include="Migrations\201904121109397_Initial.Designer.cs">
+      <DependentUpon>201904121109397_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904121145062_AddUserTable.cs" />
+    <Compile Include="Migrations\201904121145062_AddUserTable.Designer.cs">
+      <DependentUpon>201904121145062_AddUserTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904121152004_AddRoomTypeTable.cs" />
+    <Compile Include="Migrations\201904121152004_AddRoomTypeTable.Designer.cs">
+      <DependentUpon>201904121152004_AddRoomTypeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904121159458_AddRoomTypeTable1.cs" />
+    <Compile Include="Migrations\201904121159458_AddRoomTypeTable1.Designer.cs">
+      <DependentUpon>201904121159458_AddRoomTypeTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904121204011_AddRoomStatusTable.cs" />
+    <Compile Include="Migrations\201904121204011_AddRoomStatusTable.Designer.cs">
+      <DependentUpon>201904121204011_AddRoomStatusTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904121213412_AddRoomTable.cs" />
+    <Compile Include="Migrations\201904121213412_AddRoomTable.Designer.cs">
+      <DependentUpon>201904121213412_AddRoomTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904121218546_AddServiceTypeTable.cs" />
+    <Compile Include="Migrations\201904121218546_AddServiceTypeTable.Designer.cs">
+      <DependentUpon>201904121218546_AddServiceTypeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904121229268_AddReservationTable.cs" />
+    <Compile Include="Migrations\201904121229268_AddReservationTable.Designer.cs">
+      <DependentUpon>201904121229268_AddReservationTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904171424341_AddNumberOfGuestsToReservation.cs" />
+    <Compile Include="Migrations\201904171424341_AddNumberOfGuestsToReservation.Designer.cs">
+      <DependentUpon>201904171424341_AddNumberOfGuestsToReservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904171433549_AddAspNetUserIdToUsers.cs" />
+    <Compile Include="Migrations\201904171433549_AddAspNetUserIdToUsers.Designer.cs">
+      <DependentUpon>201904171433549_AddAspNetUserIdToUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904171444378_ChangeTypeIntToStringForAspNetUserId.cs" />
+    <Compile Include="Migrations\201904171444378_ChangeTypeIntToStringForAspNetUserId.Designer.cs">
+      <DependentUpon>201904171444378_ChangeTypeIntToStringForAspNetUserId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904171455318_AddAnnotationStringLengthToAspNetUserId.cs" />
+    <Compile Include="Migrations\201904171455318_AddAnnotationStringLengthToAspNetUserId.Designer.cs">
+      <DependentUpon>201904171455318_AddAnnotationStringLengthToAspNetUserId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904171456265_AddRelationBetweenAspNetUsersAndUsers.cs" />
+    <Compile Include="Migrations\201904171456265_AddRelationBetweenAspNetUsersAndUsers.Designer.cs">
+      <DependentUpon>201904171456265_AddRelationBetweenAspNetUsersAndUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904181215205_AddIsActiveToUser.cs" />
+    <Compile Include="Migrations\201904181215205_AddIsActiveToUser.Designer.cs">
+      <DependentUpon>201904181215205_AddIsActiveToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904181219375_AddIsActiveToServiceType.cs" />
+    <Compile Include="Migrations\201904181219375_AddIsActiveToServiceType.Designer.cs">
+      <DependentUpon>201904181219375_AddIsActiveToServiceType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904181221160_AddIsActiveToRoomType.cs" />
+    <Compile Include="Migrations\201904181221160_AddIsActiveToRoomType.Designer.cs">
+      <DependentUpon>201904181221160_AddIsActiveToRoomType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904181224242_AddIsActiveToRoom.cs" />
+    <Compile Include="Migrations\201904181224242_AddIsActiveToRoom.Designer.cs">
+      <DependentUpon>201904181224242_AddIsActiveToRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904181226392_AddIsActiveToReservation.cs" />
+    <Compile Include="Migrations\201904181226392_AddIsActiveToReservation.Designer.cs">
+      <DependentUpon>201904181226392_AddIsActiveToReservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904211458272_addTableRoomView.cs" />
+    <Compile Include="Migrations\201904211458272_addTableRoomView.Designer.cs">
+      <DependentUpon>201904211458272_addTableRoomView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904211508320_addRoomViewIdToTableRoom.cs" />
+    <Compile Include="Migrations\201904211508320_addRoomViewIdToTableRoom.Designer.cs">
+      <DependentUpon>201904211508320_addRoomViewIdToTableRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904211610054_addRoomViewIdToTableReservation.cs" />
+    <Compile Include="Migrations\201904211610054_addRoomViewIdToTableReservation.Designer.cs">
+      <DependentUpon>201904211610054_addRoomViewIdToTableReservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904211653565_changingRoomIdToBeNullable.cs" />
+    <Compile Include="Migrations\201904211653565_changingRoomIdToBeNullable.Designer.cs">
+      <DependentUpon>201904211653565_changingRoomIdToBeNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904220547263_RemovingViewFromRoom.cs" />
+    <Compile Include="Migrations\201904220547263_RemovingViewFromRoom.Designer.cs">
+      <DependentUpon>201904220547263_RemovingViewFromRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904220550276_AddReservationRequestTable.cs" />
+    <Compile Include="Migrations\201904220550276_AddReservationRequestTable.Designer.cs">
+      <DependentUpon>201904220550276_AddReservationRequestTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904221743516_RemovingRoomViewIdFromReservation.cs" />
+    <Compile Include="Migrations\201904221743516_RemovingRoomViewIdFromReservation.Designer.cs">
+      <DependentUpon>201904221743516_RemovingRoomViewIdFromReservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904271558037_AddAspNetUserNavPropToUser.cs" />
+    <Compile Include="Migrations\201904271558037_AddAspNetUserNavPropToUser.Designer.cs">
+      <DependentUpon>201904271558037_AddAspNetUserNavPropToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904280839496_AddPriceToReservationRequest.cs" />
+    <Compile Include="Migrations\201904280839496_AddPriceToReservationRequest.Designer.cs">
+      <DependentUpon>201904280839496_AddPriceToReservationRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904280844045_RemoveIsConfirmedFromReservation.cs" />
+    <Compile Include="Migrations\201904280844045_RemoveIsConfirmedFromReservation.Designer.cs">
+      <DependentUpon>201904280844045_RemoveIsConfirmedFromReservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904280845377_AddPriceToReservation.cs" />
+    <Compile Include="Migrations\201904280845377_AddPriceToReservation.Designer.cs">
+      <DependentUpon>201904280845377_AddPriceToReservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905031451506_RemovingRequiredForUser.cs" />
+    <Compile Include="Migrations\201905031451506_RemovingRequiredForUser.Designer.cs">
+      <DependentUpon>201905031451506_RemovingRequiredForUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905031453081_AddingRequiredForUser.cs" />
+    <Compile Include="Migrations\201905031453081_AddingRequiredForUser.Designer.cs">
+      <DependentUpon>201905031453081_AddingRequiredForUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AgeValidationAttribute.cs" />
+    <Compile Include="Models\CheckInDateValidationAttribute.cs" />
+    <Compile Include="Models\CheckoutDateValidationAttribute.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Reservation.cs" />
+    <Compile Include="Models\ReservationRequest.cs" />
+    <Compile Include="Models\ReservationRequestViewModel.cs" />
+    <Compile Include="Models\ReservationViewModel.cs" />
+    <Compile Include="Models\RoleViewModel.cs" />
+    <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\RoomStatus.cs" />
+    <Compile Include="Models\RoomType.cs" />
+    <Compile Include="Models\RoomView.cs" />
+    <Compile Include="Models\RoomViewModel.cs" />
+    <Compile Include="Models\ServiceType.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserInRolesViewModel.cs" />
+    <Compile Include="Models\UserReservationViewModel.cs" />
+    <Compile Include="Models\UserRoleModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cssTheme\animate.css" />
+    <Content Include="Content\cssTheme\aos.css" />
+    <Content Include="Content\cssTheme\bootstrap-datepicker.css" />
+    <Content Include="Content\cssTheme\bootstrap-theme.css" />
+    <Content Include="Content\cssTheme\bootstrap-theme.min.css" />
+    <Content Include="Content\cssTheme\flaticon.css" />
+    <Content Include="Content\cssTheme\icomoon.css" />
+    <Content Include="Content\cssTheme\ionicons.min.css" />
+    <Content Include="Content\cssTheme\jquery.timepicker.css" />
+    <Content Include="Content\cssTheme\magnific-popup.css" />
+    <Content Include="Content\cssTheme\open-iconic-bootstrap.min.css" />
+    <Content Include="Content\cssTheme\owl.carousel.min.css" />
+    <Content Include="Content\cssTheme\owl.theme.default.min.css" />
+    <Content Include="Content\cssTheme\style.css" />
+    <Content Include="Content\css\ajax-loader.gif" />
+    <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\aos.css" />
+    <Content Include="Content\css\bootstrap-datepicker.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap\bootstrap-grid.css" />
+    <Content Include="Content\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="Content\css\css\bootstrap-reboot.css" />
+    <Content Include="Content\css\css\mixins\_text-hide.css" />
+    <Content Include="Content\css\flaticon.css" />
+    <Content Include="Content\css\icomoon.css" />
+    <Content Include="Content\css\ionicons.min.css" />
+    <Content Include="Content\css\jquery.timepicker.css" />
+    <Content Include="Content\css\magnific-popup.css" />
+    <Content Include="Content\css\open-iconic-bootstrap.min.css" />
+    <Content Include="Content\css\owl.carousel.min.css" />
+    <Content Include="Content\css\owl.theme.default.min.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\fonts\flaticon\backup.txt" />
+    <Content Include="Content\fonts\flaticon\font\flaticon.css" />
+    <Content Include="Content\fonts\flaticon\font\flaticon.html" />
+    <Content Include="Content\fonts\ionicons\css\ionicons.min.css" />
+    <Content Include="Content\images\about.jpg" />
+    <Content Include="Content\images\bg_1.jpg" />
+    <Content Include="Content\images\bg_2.jpg" />
+    <Content Include="Content\images\bg_3.jpg" />
+    <Content Include="Content\images\bg_4.jpg" />
+    <Content Include="Content\images\bg_6.jpg" />
+    <Content Include="Content\images\bg_7.jpg" />
+    <Content Include="Content\images\bg_8.jpg" />
+    <Content Include="Content\images\bg_9.jpg" />
+    <Content Include="Content\images\image_1.jpg" />
+    <Content Include="Content\images\image_2.jpg" />
+    <Content Include="Content\images\image_3.jpg" />
+    <Content Include="Content\images\image_4.jpg" />
+    <Content Include="Content\images\image_5.jpg" />
+    <Content Include="Content\images\image_6.jpg" />
+    <Content Include="Content\images\image_7.jpg" />
+    <Content Include="Content\images\image_8.jpg" />
+    <Content Include="Content\images\ljijana.jpg" />
+    <Content Include="Content\images\sanja.jpg" />
+    <Content Include="Content\images\star.png" />
+    <Content Include="Content\images\Libar_logo.png" />
+    <Content Include="Content\images\menu-1.jpg" />
+    <Content Include="Content\images\menu-2.jpg" />
+    <Content Include="Content\images\menu-3.jpg" />
+    <Content Include="Content\images\menu-4.jpg" />
+    <Content Include="Content\images\menu-5.jpg" />
+    <Content Include="Content\images\menu-6.jpg" />
+    <Content Include="Content\images\menu-7.jpg" />
+    <Content Include="Content\images\menu-8.jpg" />
+    <Content Include="Content\images\person_1.jpg" />
+    <Content Include="Content\images\person_2.jpg" />
+    <Content Include="Content\images\person_3.jpg" />
+    <Content Include="Content\images\person_4.jpg" />
+    <Content Include="Content\images\room-1.jpg" />
+    <Content Include="Content\images\room-2.jpg" />
+    <Content Include="Content\images\room-3.jpg" />
+    <Content Include="Content\images\room-4.jpg" />
+    <Content Include="Content\images\staff-1.jpg" />
+    <Content Include="Content\images\staff-2.jpg" />
+    <Content Include="Content\images\staff-3.jpg" />
+    <Content Include="Content\images\staff-4.jpg" />
+    <Content Include="Content\images\star.jpg" />
+    <Content Include="Content\images\svetlana.jpg" />
+    <Content Include="Content\images\video-1.mp4" />
+    <Content Include="Content\js\aos.js" />
+    <Content Include="Content\js\bootstrap-datepicker.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\google-map.js" />
+    <Content Include="Content\js\jquery-3.2.1.min.js" />
+    <Content Include="Content\js\jquery-migrate-3.0.1.min.js" />
+    <Content Include="Content\js\jquery.animateNumber.min.js" />
+    <Content Include="Content\js\jquery.easing.1.3.js" />
+    <Content Include="Content\js\jquery.magnific-popup.min.js" />
+    <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\jquery.stellar.min.js" />
+    <Content Include="Content\js\jquery.waypoints.min.js" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\owl.carousel.min.js" />
+    <Content Include="Content\js\popper.min.js" />
+    <Content Include="Content\js\range.js" />
+    <Content Include="Content\js\scrollax.min.js" />
+    <Content Include="Content\reservationDetailstheme\css\style.css" />
+    <Content Include="Content\reservationDetailstheme\fonts\material-icon\css\material-design-iconic-font.css" />
+    <Content Include="Content\reservationDetailstheme\fonts\material-icon\css\material-design-iconic-font.min.css" />
+    <Content Include="Content\reservationDetailstheme\fonts\montserrat\OFL.txt" />
+    <Content Include="Content\reservationDetailstheme\images\checked.gif" />
+    <Content Include="Content\reservationDetailstheme\images\signup-bg.jpg" />
+    <Content Include="Content\reservationDetailstheme\images\unchecked.gif" />
+    <Content Include="Content\reservationDetailstheme\js\main.js" />
+    <Content Include="Content\reservationDetailstheme\vendor\jquery\jquery-ui.min.js" />
+    <Content Include="Content\reservationDetailstheme\vendor\jquery\jquery.min.js" />
+    <Content Include="Content\userDetailsTheme\css\style.css" />
+    <Content Include="Content\userDetailsTheme\fonts\material-icon\css\material-design-iconic-font.css" />
+    <Content Include="Content\userDetailsTheme\fonts\material-icon\css\material-design-iconic-font.min.css" />
+    <Content Include="Content\userDetailsTheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Content\userDetailsTheme\fonts\montserrat\montserrat-v12-latin-900.svg" />
+    <Content Include="Content\userDetailsTheme\fonts\montserrat\OFL.txt" />
+    <Content Include="Content\userDetailsTheme\images\checked.gif" />
+    <Content Include="Content\userDetailsTheme\images\signup-bg.jpg" />
+    <Content Include="Content\userDetailsTheme\images\unchecked.gif" />
+    <Content Include="Content\userDetailsTheme\js\main.js" />
+    <Content Include="Content\userDetailsTheme\vendor\jquery\jquery-ui.min.js" />
+    <Content Include="Content\userDetailsTheme\vendor\jquery\jquery.min.js" />
+    <Content Include="Content\resetPasswordTheme\css\style.css" />
+    <Content Include="Content\resetPasswordTheme\fonts\material-icon\css\material-design-iconic-font.css" />
+    <Content Include="Content\resetPasswordTheme\fonts\material-icon\css\material-design-iconic-font.min.css" />
+    <Content Include="Content\resetPasswordTheme\fonts\montserrat\OFL.txt" />
+    <Content Include="Content\resetPasswordTheme\images\checked.gif" />
+    <Content Include="Content\resetPasswordTheme\images\signup-bg.jpg" />
+    <Content Include="Content\resetPasswordTheme\images\unchecked.gif" />
+    <Content Include="Content\resetPasswordTheme\js\main.js" />
+    <Content Include="Content\resetPasswordTheme\vendor\jquery\jquery-ui.min.js" />
+    <Content Include="Content\resetPasswordTheme\vendor\jquery\jquery.min.js" />
+    <Content Include="Content\loginTheme\css\style.css" />
+    <Content Include="Content\loginTheme\fonts\material-icon\css\material-design-iconic-font.css" />
+    <Content Include="Content\loginTheme\fonts\material-icon\css\material-design-iconic-font.min.css" />
+    <Content Include="Content\loginTheme\fonts\montserrat\OFL.txt" />
+    <Content Include="Content\loginTheme\images\checked.gif" />
+    <Content Include="Content\loginTheme\images\signup-bg.jpg" />
+    <Content Include="Content\loginTheme\images\unchecked.gif" />
+    <Content Include="Content\loginTheme\js\main.js" />
+    <Content Include="Content\loginTheme\vendor\jquery\jquery-ui.min.js" />
+    <Content Include="Content\loginTheme\vendor\jquery\jquery.min.js" />
+    <Content Include="Content\registertheme\css\style.css" />
+    <Content Include="Content\registertheme\fonts\material-icon\css\material-design-iconic-font.css" />
+    <Content Include="Content\registertheme\fonts\material-icon\css\material-design-iconic-font.min.css" />
+    <Content Include="Content\registertheme\fonts\montserrat\OFL.txt" />
+    <Content Include="Content\registertheme\images\checked.gif" />
+    <Content Include="Content\registertheme\images\signup-bg.jpg" />
+    <Content Include="Content\registertheme\images\unchecked.gif" />
+    <Content Include="Content\registertheme\index.html" />
+    <Content Include="Content\registertheme\js\main.js" />
+    <Content Include="Content\registertheme\readme.txt" />
+    <Content Include="Content\registertheme\vendor\jquery\jquery-ui.min.js" />
+    <Content Include="Content\registertheme\vendor\jquery\jquery.min.js" />
+    <Content Include="Content\roomGallery\images\room-3.jpg" />
+    <Content Include="Content\roomGallery\images\room1-1.jpg" />
+    <Content Include="Content\roomGallery\images\room1-2.jpg" />
+    <Content Include="Content\roomGallery\images\room1-3.jpg" />
+    <Content Include="Content\roomGallery\images\room1-4.jpg" />
+    <Content Include="Content\roomGallery\images\room1-5.jpg" />
+    <Content Include="Content\roomGallery\images\room1-6.jpg" />
+    <Content Include="Content\roomGallery\images\room2-1.jpg" />
+    <Content Include="Content\roomGallery\images\room2-2.jpg" />
+    <Content Include="Content\roomGallery\images\room2-3.jpg" />
+    <Content Include="Content\roomGallery\images\room2-4.jpg" />
+    <Content Include="Content\roomGallery\images\room3-1.jpg" />
+    <Content Include="Content\roomGallery\images\room3-2.jpg" />
+    <Content Include="Content\roomGallery\images\room3-3.jpg" />
+    <Content Include="Content\roomGallery\images\room4-1.jpg" />
+    <Content Include="Content\roomGallery\images\room4-2.jpg" />
+    <Content Include="Content\roomGallery\images\room4-3.jpg" />
+    <Content Include="Content\roomGallery\images\room4-4.jpg" />
+    <Content Include="Content\roomGallery\images\room-4.jpg" />
+    <Content Include="Content\roomGallery\roomGallery.js" />
+    <Content Include="Content\roomGallery\style.css" />
+    <Content Include="Content\site.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\cssTheme\bootstrap-theme.css.map" />
+    <Content Include="Content\cssTheme\bootstrap-theme.min.css.map" />
+    <Content Include="Content\css\.DS_Store" />
+    <Content Include="Content\css\bootstrap\.DS_Store" />
+    <Content Include="Content\css\css\.DS_Store" />
+    <Content Include="Content\fonts\.DS_Store" />
+    <Content Include="Content\fonts\flaticon\.DS_Store" />
+    <Content Include="Content\fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="Content\fonts\flaticon\font\Flaticon.svg" />
+    <Content Include="Content\fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="Content\fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="Content\fonts\flaticon\font\_flaticon.scss" />
+    <Content Include="Content\fonts\flaticon\license\license.pdf" />
+    <Content Include="Content\fonts\icomoon\icomoon.eot" />
+    <Content Include="Content\fonts\icomoon\icomoon.svg" />
+    <Content Include="Content\fonts\icomoon\icomoon.ttf" />
+    <Content Include="Content\fonts\icomoon\icomoon.woff" />
+    <Content Include="Content\fonts\ionicons\css\_ionicons.scss" />
+    <Content Include="Content\fonts\ionicons\fonts\.DS_Store" />
+    <Content Include="Content\fonts\ionicons\fonts\ionicons.eot" />
+    <Content Include="Content\fonts\ionicons\fonts\ionicons.svg" />
+    <Content Include="Content\fonts\ionicons\fonts\ionicons.ttf" />
+    <Content Include="Content\fonts\ionicons\fonts\ionicons.woff" />
+    <Content Include="Content\fonts\ionicons\fonts\ionicons.woff2" />
+    <Content Include="Content\fonts\open-iconic\open-iconic.eot" />
+    <Content Include="Content\fonts\open-iconic\open-iconic.otf" />
+    <Content Include="Content\fonts\open-iconic\open-iconic.svg" />
+    <Content Include="Content\fonts\open-iconic\open-iconic.ttf" />
+    <Content Include="Content\fonts\open-iconic\open-iconic.woff" />
+    <Content Include="Content\images\.DS_Store" />
+    <Content Include="Content\js\.DS_Store" />
+    <Content Include="Content\css\stil" />
+    <Content Include="Content\registertheme\.sass-cache\21880c0ffe15753a53f8402e9f64e1077e071510\style.scssc" />
+    <Content Include="Content\registertheme\.sass-cache\2af427b2894d1e78c5806e231aa35d00838a84e0\style.scssc" />
+    <Content Include="Content\registertheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\extend.scssc" />
+    <Content Include="Content\registertheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\fonts.scssc" />
+    <Content Include="Content\registertheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\global.scssc" />
+    <Content Include="Content\registertheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\minxi.scssc" />
+    <Content Include="Content\registertheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\variables.scssc" />
+    <Content Include="Content\registertheme\.sass-cache\643489b018602f15119d8f44aeb7fc79468873a9\main.scssc" />
+    <Content Include="Content\registertheme\.sass-cache\643489b018602f15119d8f44aeb7fc79468873a9\responsive.scssc" />
+    <Content Include="Content\registertheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\extend.scssc" />
+    <Content Include="Content\registertheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\fonts.scssc" />
+    <Content Include="Content\registertheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\global.scssc" />
+    <Content Include="Content\registertheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\minxi.scssc" />
+    <Content Include="Content\registertheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\variables.scssc" />
+    <Content Include="Content\registertheme\.sass-cache\f49285f1317a1cafa93ab4f5de346f92bbc40d58\main.scssc" />
+    <Content Include="Content\registertheme\.sass-cache\f49285f1317a1cafa93ab4f5de346f92bbc40d58\responsive.scssc" />
+    <Content Include="Content\registertheme\css\style.css.map" />
+    <Content Include="Content\registertheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Content\registertheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Content\registertheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\registertheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\registertheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Content\registertheme\fonts\montserrat\Montserrat-Bold.ttf" />
+    <Content Include="Content\registertheme\fonts\montserrat\Montserrat-BoldItalic.ttf" />
+    <Content Include="Content\registertheme\fonts\montserrat\Montserrat-ExtraLight.ttf" />
+    <Content Include="Content\registertheme\fonts\montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="Content\registertheme\fonts\montserrat\Montserrat-Italic.ttf" />
+    <Content Include="Content\registertheme\fonts\montserrat\Montserrat-Light.ttf" />
+    <Content Include="Content\registertheme\fonts\montserrat\Montserrat-Medium.ttf" />
+    <Content Include="Content\registertheme\fonts\montserrat\Montserrat-Regular.ttf" />
+    <Content Include="Content\registertheme\fonts\montserrat\Montserrat-SemiBold.ttf" />
+    <Content Include="Content\registertheme\fonts\montserrat\montserrat-v12-latin-900.eot" />
+    <Content Include="Content\registertheme\fonts\montserrat\montserrat-v12-latin-900.svg" />
+    <Content Include="Content\registertheme\fonts\montserrat\montserrat-v12-latin-900.ttf" />
+    <Content Include="Content\registertheme\fonts\montserrat\montserrat-v12-latin-900.woff" />
+    <Content Include="Content\registertheme\fonts\montserrat\montserrat-v12-latin-900.woff2" />
+    <Content Include="Content\registertheme\scss\common\extend.scss" />
+    <Content Include="Content\registertheme\scss\common\fonts.scss" />
+    <Content Include="Content\registertheme\scss\common\global.scss" />
+    <Content Include="Content\registertheme\scss\common\minxi.scss" />
+    <Content Include="Content\registertheme\scss\common\variables.scss" />
+    <Content Include="Content\registertheme\scss\layouts\main.scss" />
+    <Content Include="Content\registertheme\scss\layouts\responsive.scss" />
+    <Content Include="Content\registertheme\scss\style.scss" />
+    <Content Include="Content\loginTheme\css\style.css.map" />
+    <Content Include="Content\loginTheme\scss\common\extend.scss" />
+    <Content Include="Content\loginTheme\scss\common\fonts.scss" />
+    <Content Include="Content\loginTheme\scss\common\global.scss" />
+    <Content Include="Content\loginTheme\scss\common\minxi.scss" />
+    <Content Include="Content\loginTheme\scss\common\variables.scss" />
+    <Content Include="Content\loginTheme\scss\layouts\main.scss" />
+    <Content Include="Content\loginTheme\scss\layouts\responsive.scss" />
+    <Content Include="Content\loginTheme\scss\style.scss" />
+    <Content Include="Content\loginTheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Content\loginTheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Content\loginTheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\loginTheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\loginTheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Content\loginTheme\fonts\montserrat\Montserrat-Bold.ttf" />
+    <Content Include="Content\loginTheme\fonts\montserrat\Montserrat-BoldItalic.ttf" />
+    <Content Include="Content\loginTheme\fonts\montserrat\Montserrat-ExtraLight.ttf" />
+    <Content Include="Content\loginTheme\fonts\montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="Content\loginTheme\fonts\montserrat\Montserrat-Italic.ttf" />
+    <Content Include="Content\loginTheme\fonts\montserrat\Montserrat-Light.ttf" />
+    <Content Include="Content\loginTheme\fonts\montserrat\Montserrat-Medium.ttf" />
+    <Content Include="Content\loginTheme\fonts\montserrat\Montserrat-Regular.ttf" />
+    <Content Include="Content\loginTheme\fonts\montserrat\Montserrat-SemiBold.ttf" />
+    <Content Include="Content\loginTheme\fonts\montserrat\montserrat-v12-latin-900.eot" />
+    <Content Include="Content\loginTheme\fonts\montserrat\montserrat-v12-latin-900.svg" />
+    <Content Include="Content\loginTheme\fonts\montserrat\montserrat-v12-latin-900.ttf" />
+    <Content Include="Content\loginTheme\fonts\montserrat\montserrat-v12-latin-900.woff" />
+    <Content Include="Content\loginTheme\fonts\montserrat\montserrat-v12-latin-900.woff2" />
+    <Content Include="Content\loginTheme\.sass-cache\21880c0ffe15753a53f8402e9f64e1077e071510\style.scssc" />
+    <Content Include="Content\loginTheme\.sass-cache\2af427b2894d1e78c5806e231aa35d00838a84e0\style.scssc" />
+    <Content Include="Content\loginTheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\extend.scssc" />
+    <Content Include="Content\loginTheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\fonts.scssc" />
+    <Content Include="Content\loginTheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\global.scssc" />
+    <Content Include="Content\loginTheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\minxi.scssc" />
+    <Content Include="Content\loginTheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\variables.scssc" />
+    <Content Include="Content\loginTheme\.sass-cache\643489b018602f15119d8f44aeb7fc79468873a9\main.scssc" />
+    <Content Include="Content\loginTheme\.sass-cache\643489b018602f15119d8f44aeb7fc79468873a9\responsive.scssc" />
+    <Content Include="Content\loginTheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\extend.scssc" />
+    <Content Include="Content\loginTheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\fonts.scssc" />
+    <Content Include="Content\loginTheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\global.scssc" />
+    <Content Include="Content\loginTheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\minxi.scssc" />
+    <Content Include="Content\loginTheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\variables.scssc" />
+    <Content Include="Content\loginTheme\.sass-cache\f49285f1317a1cafa93ab4f5de346f92bbc40d58\main.scssc" />
+    <Content Include="Content\loginTheme\.sass-cache\f49285f1317a1cafa93ab4f5de346f92bbc40d58\responsive.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\21880c0ffe15753a53f8402e9f64e1077e071510\style.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\2af427b2894d1e78c5806e231aa35d00838a84e0\style.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\extend.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\fonts.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\global.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\minxi.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\variables.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\643489b018602f15119d8f44aeb7fc79468873a9\main.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\643489b018602f15119d8f44aeb7fc79468873a9\responsive.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\extend.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\fonts.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\global.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\minxi.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\variables.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\f49285f1317a1cafa93ab4f5de346f92bbc40d58\main.scssc" />
+    <Content Include="Content\resetPasswordTheme\.sass-cache\f49285f1317a1cafa93ab4f5de346f92bbc40d58\responsive.scssc" />
+    <Content Include="Content\resetPasswordTheme\css\style.css.map" />
+    <Content Include="Content\resetPasswordTheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Content\resetPasswordTheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Content\resetPasswordTheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\resetPasswordTheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\resetPasswordTheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Content\resetPasswordTheme\fonts\montserrat\Montserrat-Bold.ttf" />
+    <Content Include="Content\resetPasswordTheme\fonts\montserrat\Montserrat-BoldItalic.ttf" />
+    <Content Include="Content\resetPasswordTheme\fonts\montserrat\Montserrat-ExtraLight.ttf" />
+    <Content Include="Content\resetPasswordTheme\fonts\montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="Content\resetPasswordTheme\fonts\montserrat\Montserrat-Italic.ttf" />
+    <Content Include="Content\resetPasswordTheme\fonts\montserrat\Montserrat-Light.ttf" />
+    <Content Include="Content\resetPasswordTheme\fonts\montserrat\Montserrat-Medium.ttf" />
+    <Content Include="Content\resetPasswordTheme\fonts\montserrat\Montserrat-Regular.ttf" />
+    <Content Include="Content\resetPasswordTheme\fonts\montserrat\Montserrat-SemiBold.ttf" />
+    <Content Include="Content\resetPasswordTheme\fonts\montserrat\montserrat-v12-latin-900.eot" />
+    <Content Include="Content\resetPasswordTheme\fonts\montserrat\montserrat-v12-latin-900.svg" />
+    <Content Include="Content\resetPasswordTheme\fonts\montserrat\montserrat-v12-latin-900.ttf" />
+    <Content Include="Content\resetPasswordTheme\fonts\montserrat\montserrat-v12-latin-900.woff" />
+    <Content Include="Content\resetPasswordTheme\fonts\montserrat\montserrat-v12-latin-900.woff2" />
+    <Content Include="Content\resetPasswordTheme\scss\common\extend.scss" />
+    <Content Include="Content\resetPasswordTheme\scss\common\fonts.scss" />
+    <Content Include="Content\resetPasswordTheme\scss\common\global.scss" />
+    <Content Include="Content\resetPasswordTheme\scss\common\minxi.scss" />
+    <Content Include="Content\resetPasswordTheme\scss\common\variables.scss" />
+    <Content Include="Content\resetPasswordTheme\scss\layouts\main.scss" />
+    <Content Include="Content\resetPasswordTheme\scss\layouts\responsive.scss" />
+    <Content Include="Content\resetPasswordTheme\scss\style.scss" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\21880c0ffe15753a53f8402e9f64e1077e071510\style.scssc" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\2af427b2894d1e78c5806e231aa35d00838a84e0\style.scssc" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\extend.scssc" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\fonts.scssc" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\global.scssc" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\minxi.scssc" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\variables.scssc" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\643489b018602f15119d8f44aeb7fc79468873a9\main.scssc" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\643489b018602f15119d8f44aeb7fc79468873a9\responsive.scssc" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\extend.scssc" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\fonts.scssc" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\global.scssc" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\minxi.scssc" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\variables.scssc" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\f49285f1317a1cafa93ab4f5de346f92bbc40d58\main.scssc" />
+    <Content Include="Content\reservationDetailstheme\.sass-cache\f49285f1317a1cafa93ab4f5de346f92bbc40d58\responsive.scssc" />
+    <Content Include="Content\reservationDetailstheme\css\style.css.map" />
+    <Content Include="Content\reservationDetailstheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Content\reservationDetailstheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Content\reservationDetailstheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\reservationDetailstheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\reservationDetailstheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Content\reservationDetailstheme\fonts\montserrat\Montserrat-Bold.ttf" />
+    <Content Include="Content\reservationDetailstheme\fonts\montserrat\Montserrat-BoldItalic.ttf" />
+    <Content Include="Content\reservationDetailstheme\fonts\montserrat\Montserrat-ExtraLight.ttf" />
+    <Content Include="Content\reservationDetailstheme\fonts\montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="Content\reservationDetailstheme\fonts\montserrat\Montserrat-Italic.ttf" />
+    <Content Include="Content\reservationDetailstheme\fonts\montserrat\Montserrat-Light.ttf" />
+    <Content Include="Content\reservationDetailstheme\fonts\montserrat\Montserrat-Medium.ttf" />
+    <Content Include="Content\reservationDetailstheme\fonts\montserrat\Montserrat-Regular.ttf" />
+    <Content Include="Content\reservationDetailstheme\fonts\montserrat\Montserrat-SemiBold.ttf" />
+    <Content Include="Content\reservationDetailstheme\fonts\montserrat\montserrat-v12-latin-900.eot" />
+    <Content Include="Content\reservationDetailstheme\fonts\montserrat\montserrat-v12-latin-900.svg" />
+    <Content Include="Content\reservationDetailstheme\fonts\montserrat\montserrat-v12-latin-900.ttf" />
+    <Content Include="Content\reservationDetailstheme\fonts\montserrat\montserrat-v12-latin-900.woff" />
+    <Content Include="Content\reservationDetailstheme\fonts\montserrat\montserrat-v12-latin-900.woff2" />
+    <Content Include="Content\reservationDetailstheme\scss\common\extend.scss" />
+    <Content Include="Content\reservationDetailstheme\scss\common\fonts.scss" />
+    <Content Include="Content\reservationDetailstheme\scss\common\global.scss" />
+    <Content Include="Content\reservationDetailstheme\scss\common\minxi.scss" />
+    <Content Include="Content\reservationDetailstheme\scss\common\variables.scss" />
+    <Content Include="Content\reservationDetailstheme\scss\layouts\main.scss" />
+    <Content Include="Content\reservationDetailstheme\scss\layouts\responsive.scss" />
+    <Content Include="Content\reservationDetailstheme\scss\style.scss" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\21880c0ffe15753a53f8402e9f64e1077e071510\style.scssc" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\2af427b2894d1e78c5806e231aa35d00838a84e0\style.scssc" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\extend.scssc" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\fonts.scssc" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\global.scssc" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\minxi.scssc" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\632f5d1dd893d2e8764de51b8ca4120e25043113\variables.scssc" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\643489b018602f15119d8f44aeb7fc79468873a9\main.scssc" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\643489b018602f15119d8f44aeb7fc79468873a9\responsive.scssc" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\extend.scssc" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\fonts.scssc" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\global.scssc" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\minxi.scssc" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\7643c8aa2e335ff5e104bc47d8dd7f1a0693bb39\variables.scssc" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\f49285f1317a1cafa93ab4f5de346f92bbc40d58\main.scssc" />
+    <Content Include="Content\userDetailsTheme\.sass-cache\f49285f1317a1cafa93ab4f5de346f92bbc40d58\responsive.scssc" />
+    <Content Include="Content\userDetailsTheme\css\style.css.map" />
+    <Content Include="Content\userDetailsTheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Content\userDetailsTheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\userDetailsTheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\userDetailsTheme\fonts\material-icon\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Content\userDetailsTheme\fonts\montserrat\Montserrat-Bold.ttf" />
+    <Content Include="Content\userDetailsTheme\fonts\montserrat\Montserrat-BoldItalic.ttf" />
+    <Content Include="Content\userDetailsTheme\fonts\montserrat\Montserrat-ExtraLight.ttf" />
+    <Content Include="Content\userDetailsTheme\fonts\montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="Content\userDetailsTheme\fonts\montserrat\Montserrat-Italic.ttf" />
+    <Content Include="Content\userDetailsTheme\fonts\montserrat\Montserrat-Light.ttf" />
+    <Content Include="Content\userDetailsTheme\fonts\montserrat\Montserrat-Medium.ttf" />
+    <Content Include="Content\userDetailsTheme\fonts\montserrat\Montserrat-Regular.ttf" />
+    <Content Include="Content\userDetailsTheme\fonts\montserrat\Montserrat-SemiBold.ttf" />
+    <Content Include="Content\userDetailsTheme\fonts\montserrat\montserrat-v12-latin-900.eot" />
+    <Content Include="Content\userDetailsTheme\fonts\montserrat\montserrat-v12-latin-900.ttf" />
+    <Content Include="Content\userDetailsTheme\fonts\montserrat\montserrat-v12-latin-900.woff" />
+    <Content Include="Content\userDetailsTheme\fonts\montserrat\montserrat-v12-latin-900.woff2" />
+    <Content Include="Content\userDetailsTheme\scss\common\extend.scss" />
+    <Content Include="Content\userDetailsTheme\scss\common\fonts.scss" />
+    <Content Include="Content\userDetailsTheme\scss\common\global.scss" />
+    <Content Include="Content\userDetailsTheme\scss\common\minxi.scss" />
+    <Content Include="Content\userDetailsTheme\scss\common\variables.scss" />
+    <Content Include="Content\userDetailsTheme\scss\layouts\main.scss" />
+    <Content Include="Content\userDetailsTheme\scss\layouts\responsive.scss" />
+    <Content Include="Content\userDetailsTheme\scss\style.scss" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\validation\roomTypeValidation.js" />
+    <Content Include="Scripts\validation\roomValidation.js" />
+    <Content Include="Scripts\validation\serviceTypeValidation.js" />
+    <Content Include="Scripts\validation\userRegisterValidation.js" />
+    <Content Include="Scripts\validation\validationMessage.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Reservation\Create.cshtml" />
+    <Content Include="Views\Reservation\Index.cshtml" />
+    <Content Include="Views\ReservationRequest\Create.cshtml" />
+    <Content Include="Views\ReservationRequest\Index.cshtml" />
+    <Content Include="Views\ReservationRequest\Show.cshtml" />
+    <Content Include="Views\Account\AddUserRole.cshtml" />
+    <Content Include="Views\Room\Create.cshtml" />
+    <Content Include="Views\Room\DeleteDetails.cshtml" />
+    <Content Include="Views\Room\Edit.cshtml" />
+    <Content Include="Views\Room\Index.cshtml" />
+    <Content Include="Views\RoomType\Create.cshtml" />
+    <Content Include="Views\RoomType\DeleteDetails.cshtml" />
+    <Content Include="Views\RoomType\Edit.cshtml" />
+    <Content Include="Views\RoomType\Index.cshtml" />
+    <Content Include="Views\ServiceType\Create.cshtml" />
+    <Content Include="Views\ServiceType\DeleteDetails.cshtml" />
+    <Content Include="Views\ServiceType\Edit.cshtml" />
+    <Content Include="Views\ServiceType\Index.cshtml" />
+    <Content Include="Views\RoomType\Details.cshtml" />
+    <Content Include="Views\Room\Details.cshtml" />
+    <Content Include="Views\ServiceType\Details.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\DeleteDetails.cshtml" />
+    <Content Include="Views\User\ReservationDetails.cshtml" />
+    <Content Include="Views\Reservation\Edit.cshtml" />
+    <Content Include="Views\Account\RemoveUserFromRole.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201904121109397_Initial.resx">
+      <DependentUpon>201904121109397_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904121145062_AddUserTable.resx">
+      <DependentUpon>201904121145062_AddUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904121152004_AddRoomTypeTable.resx">
+      <DependentUpon>201904121152004_AddRoomTypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904121159458_AddRoomTypeTable1.resx">
+      <DependentUpon>201904121159458_AddRoomTypeTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904121204011_AddRoomStatusTable.resx">
+      <DependentUpon>201904121204011_AddRoomStatusTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904121213412_AddRoomTable.resx">
+      <DependentUpon>201904121213412_AddRoomTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904121218546_AddServiceTypeTable.resx">
+      <DependentUpon>201904121218546_AddServiceTypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904121229268_AddReservationTable.resx">
+      <DependentUpon>201904121229268_AddReservationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904171424341_AddNumberOfGuestsToReservation.resx">
+      <DependentUpon>201904171424341_AddNumberOfGuestsToReservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904171433549_AddAspNetUserIdToUsers.resx">
+      <DependentUpon>201904171433549_AddAspNetUserIdToUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904171444378_ChangeTypeIntToStringForAspNetUserId.resx">
+      <DependentUpon>201904171444378_ChangeTypeIntToStringForAspNetUserId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904171455318_AddAnnotationStringLengthToAspNetUserId.resx">
+      <DependentUpon>201904171455318_AddAnnotationStringLengthToAspNetUserId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904171456265_AddRelationBetweenAspNetUsersAndUsers.resx">
+      <DependentUpon>201904171456265_AddRelationBetweenAspNetUsersAndUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904181215205_AddIsActiveToUser.resx">
+      <DependentUpon>201904181215205_AddIsActiveToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904181219375_AddIsActiveToServiceType.resx">
+      <DependentUpon>201904181219375_AddIsActiveToServiceType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904181221160_AddIsActiveToRoomType.resx">
+      <DependentUpon>201904181221160_AddIsActiveToRoomType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904181224242_AddIsActiveToRoom.resx">
+      <DependentUpon>201904181224242_AddIsActiveToRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904181226392_AddIsActiveToReservation.resx">
+      <DependentUpon>201904181226392_AddIsActiveToReservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904211458272_addTableRoomView.resx">
+      <DependentUpon>201904211458272_addTableRoomView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904211508320_addRoomViewIdToTableRoom.resx">
+      <DependentUpon>201904211508320_addRoomViewIdToTableRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904211610054_addRoomViewIdToTableReservation.resx">
+      <DependentUpon>201904211610054_addRoomViewIdToTableReservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904211653565_changingRoomIdToBeNullable.resx">
+      <DependentUpon>201904211653565_changingRoomIdToBeNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904220547263_RemovingViewFromRoom.resx">
+      <DependentUpon>201904220547263_RemovingViewFromRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904220550276_AddReservationRequestTable.resx">
+      <DependentUpon>201904220550276_AddReservationRequestTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904221743516_RemovingRoomViewIdFromReservation.resx">
+      <DependentUpon>201904221743516_RemovingRoomViewIdFromReservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904271558037_AddAspNetUserNavPropToUser.resx">
+      <DependentUpon>201904271558037_AddAspNetUserNavPropToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904280839496_AddPriceToReservationRequest.resx">
+      <DependentUpon>201904280839496_AddPriceToReservationRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904280844045_RemoveIsConfirmedFromReservation.resx">
+      <DependentUpon>201904280844045_RemoveIsConfirmedFromReservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904280845377_AddPriceToReservation.resx">
+      <DependentUpon>201904280845377_AddPriceToReservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905031451506_RemovingRequiredForUser.resx">
+      <DependentUpon>201905031451506_RemovingRequiredForUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905031453081_AddingRequiredForUser.resx">
+      <DependentUpon>201905031453081_AddingRequiredForUser.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53437</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53437/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

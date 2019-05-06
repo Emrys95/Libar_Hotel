@@ -1,0 +1,57 @@
+﻿
+@model Libar_Hotel.Models.RoomType
+
+@{
+                
+
+   ViewBag.Title = "Ukloni tip sobe";
+}
+
+<br>
+<div class="panel panel-danger">
+    <div class="panel panel-heading">
+        <h1>Podaci o tipu sobe:</h1>
+    </div>
+
+   
+        @using (Html.BeginForm())
+        {
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+
+
+            </dl>
+        }
+    </div>
+
+
+<div class="alert alert-warning alert-dismissible fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong><h4>Upozorenje!</h4></strong> <h5>Da li ste sigurni da zelite da izbrisete tip sobe?</h5>
+</div>
+@using (Html.BeginForm())
+{
+
+    <input type="submit" value="Da" class="btn btn-danger btn-m" />
+    @Html.ActionLink("Ne", "Index", null, new { @class = "btn btn-success btn-m" })
+
+
+}
+
+
+

@@ -1,0 +1,25 @@
+﻿@model Libar_Hotel.Models.RoleViewModel 
+@{
+    ViewBag.Title = "Napravi ulogu";
+}
+
+
+<br />
+<div class="panel panel-primary">
+    <div class="panel panel-heading">
+        <h2 class="text-center">Napravite ulogu</h2>
+    </div>
+    <div class="panel panel-body">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            </div>
+            <input type="submit" class="btn btn-primary" name="Submit" value="Dodajte ulogu" />
+            @Html.ActionLink("Vrati se","Index", "Role", new {@class="btn btn-info"})
+        }
+    </div >
+
+</div>
+

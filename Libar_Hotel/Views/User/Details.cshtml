@@ -1,0 +1,102 @@
+﻿@using Microsoft.AspNet.Identity
+@model Libar_Hotel.Models.User
+@{
+    ViewBag.Title = "Detalji o korisniku";
+}
+
+
+<br>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="~Content/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <!-- Main css -->
+    <link rel="stylesheet" href="~/Content/userDetailsTheme/css/style.css">
+</head>
+<body>
+    <br />
+    <br />
+    <br />
+    <div class="main">
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div style="font-size:16px" class="signup-content">
+
+
+                    <dl class="dl-horizontal">
+                        <h2>Detalji o korisniku</h2>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.AspNetUser.UserName)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.AspNetUser.UserName)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.FirstName)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.FirstName)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.LastName)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.LastName)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.AspNetUser.Email)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BirthDate)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.BirthDate)
+                        </dd>
+
+                    </dl>
+
+          
+
+
+            <div>
+                @if (User.IsInRole("Menadzer"))
+                {
+                    @Html.ActionLink("Nazad na listu korisnika", "Index", null, new { @class = "btn btn-info btn-m" })
+                }
+
+                @Html.ActionLink("Prikazi rezervaciju", "ReservationDetails", "User", new { id = Model.Id }, new { @class = "btn btn-success btn-m" })
+                @if (User.Identity.GetUserId() == Model.AspNetUserId)
+                {
+                    @Html.ActionLink("Promenite lozinku", "ChangePassword", "Manage", null, new { @class = "btn btn-warning" })
+                }
+
+            </div>
+    </div>
+    
+    </section>
+
+    </div>
+    </body>
+</html>
+

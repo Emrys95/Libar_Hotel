@@ -1,0 +1,118 @@
+﻿@model Libar_Hotel.Models.ReservationRequest
+@{
+    ViewBag.Title = "Zahtev rezervacije";
+}
+
+
+
+<br>
+<div class="panel panel-danger">
+
+
+
+    <div class="panel panel-heading">
+        <h2>Podaci o Rezervaciji:</h2>
+    </div>
+
+    <div class="panel panel-body">
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.User.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.User.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.LastName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ReservationDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ReservationDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckInDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CheckInDate.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckOutDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CheckOutDate.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RoomType.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RoomType.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ServiceType.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ServiceType.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumberOfGuests)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumberOfGuests)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+        </dl>
+
+    </div>
+</div>
+
+
+@using (Html.BeginForm("Delete", "ReservationRequest", new { idReservationRequest = Model.Id }, FormMethod.Post))
+{
+    @Html.ActionLink("Odobri", "Create", "Reservation", new { idReservationRequest = Model.Id }, new { @class = "btn btn-success" })
+
+    <input type="submit" value="Odbaci" class="btn btn-danger" />
+
+    @Html.ActionLink("Vrati se", "Index", "ReservationRequest", new { @class = "btn btn-info" })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

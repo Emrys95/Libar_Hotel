@@ -1,0 +1,35 @@
+﻿@model Libar_Hotel.Models.RoomType
+
+@{
+    ViewBag.Title = "Prikazi tip sobe";
+}
+<br>
+<div class="panel panel-warning">
+    <div class="panel panel-heading">
+        <h1>Podaci o tipu sobe:</h1>
+    </div>
+
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                   <strong>@Html.DisplayFor(model => model.Name) </strong>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+
+                <dd>
+                    <strong>@Html.DisplayFor(model => model.Price) &euro;</strong>
+                </dd>
+            </dl>
+        </div>
+    
+            <div>
+                @Html.ActionLink("Nazad na listu tipova soba", "Index", null, new { @class = "btn btn-info btn-m" })
+            </div>
+       

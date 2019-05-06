@@ -1,0 +1,70 @@
+﻿@using System.Collections.Generic
+@using Libar_Hotel.Models
+@model List<User>
+
+@{
+    ViewBag.Title = "Korisnici";
+}
+
+
+
+<br />
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="text-center">Korisnici</h2>
+    </div>
+
+    
+    <div class="panel-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td class="text-center">Korisničko ime</td>
+                
+                    <td class="text-center">Ime</td>
+                
+                    <td class="text-center">Prezime</td>
+                
+                    <td class="text-center">Email</td>
+
+                    <td class="text-center">Datum rođenja</td>
+               
+                   
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    
+                </tr>
+
+            </thead>
+
+            <tbody>
+                @foreach (var user in Model)
+                {
+                <tr>
+                    <td class="text-center">@user.AspNetUser.UserName</td>
+
+                    <td class="text-center">@user.FirstName</td>
+                    <td class="text-center">@user.LastName</td>
+                    <td class="text-center">@user.AspNetUser.Email</td>
+                    <td class="text-center">@user.BirthDate.ToString("dd.MM.yyyy")</td>
+
+                    <td>
+                        @Html.ActionLink("Detalji", "Details", "User", new { id = user.Id }, new { @class = "btn btn-warning btn-block" })
+                    
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Izbrisi", "DeleteDetails", "User", new { id = user.Id }, new { @class = "btn btn-danger btn-block" })
+                    </td>
+
+                </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+

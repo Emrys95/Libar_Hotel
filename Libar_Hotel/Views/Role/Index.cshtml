@@ -1,0 +1,55 @@
+﻿@using System.Collections.Generic
+@using Libar_Hotel.Models
+@model List<UserInRolesViewModel>
+@{
+    ViewBag.Title = "Uloge korisnika";
+}
+<br />
+
+
+@if (TempData["Message"] != null)
+{
+
+    <div class="alert alert-success alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Obaveštenje</strong> <h2>@TempData["Message"]</h2>
+    </div>
+}
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="text-center">Uloge korisnika</h2>
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td class="text-center">Korisničko ime</td>
+                    <td class="text-center">Email</td>
+                    <td class="text-center">Uloge</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td class="text-center">@user.UserName</td>
+                        <td class="text-center">@user.Email</td>
+                        <td class="text-center">@user.Role</td>
+                        <td class="text-center">
+                            @Html.ActionLink("Ukloni ulogu", "RemoveUserFromRole", "Account", routeValues: new { id = user.UserId }, htmlAttributes: new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Napravite ulogu", "Create", "Role", new { @class = "btn btn-primary" })
+    @Html.ActionLink("Dodelite ulogu korisnicima", "AddUserRole", "Account", null, new { @class = "btn btn-success" })
+</div>
+

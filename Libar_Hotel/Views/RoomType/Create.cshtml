@@ -1,0 +1,34 @@
+﻿@model Libar_Hotel.Models.RoomType
+
+@{
+    ViewBag.Title = "Napravi tip sobe";
+}
+<br>
+<div class="panel panel-success">
+    <div class="panel panel-heading">
+        <h1>Dodaj novi tip sobe</h1>
+    </div>
+    <div class="panel panel-body">
+        @using (Html.BeginForm("Create", "RoomType", FormMethod.Post, new { id = "room-type"}))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Price)
+                @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Price)
+            </div>
+            <input type="submit" class="btn btn-success" name="Submit" value="Dodaj" />
+            <div>
+                <br>
+                @Html.ActionLink("Nazad na listu tipova soba", "Index",null, new { @class= "btn btn-info btn-m" })
+            </div>
+
+        }
+    </div>
+
+</div>
+

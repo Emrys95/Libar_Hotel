@@ -1,0 +1,31 @@
+﻿@using Libar_Hotel.Models
+@model RoleViewModel
+@{
+    ViewBag.Title = "Dodaj ulogu korisniku";
+}
+
+
+<br />
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="text-center">Dodelite uloge korisnicima</h2>
+    </div>
+    
+    <div class="panel-body">
+        @using (Html.BeginForm("AddUserRole", "Account", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.DropDownListFor(m => m.UserRoleModel.AspUserId, new SelectList(Model.AspUsers, "Id", "UserName"), new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.DropDownListFor(m => m.UserRoleModel.RoleName, new SelectList(Model.Roles, "Name", "Name"), new { @class = "form-control" })
+            </div>
+
+            <input type="submit" name="submit" value="Postavi ulogu" class="btn btn-success" />
+            @Html.ActionLink("Vrati se", "Index", "Role", routeValues: null, htmlAttributes: new { @class="btn btn-info" })
+        }
+    </div>
+
+</div>
+

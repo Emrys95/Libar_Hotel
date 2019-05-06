@@ -1,0 +1,44 @@
+﻿@model Libar_Hotel.Models.ReservationViewModel
+@{
+    /**/
+
+    ViewBag.Title = "Potvrdi rezervaciju";
+
+}
+
+
+<h2>Potvrdite Rezervaciju</h2>
+
+@using (Html.BeginForm("Create", "Reservation", new { idReservationRequest = Model.ReservationRequestId }, FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Reservation.UserId)
+    @Html.HiddenFor(m => m.Reservation.CheckInDate)
+    @Html.HiddenFor(m => m.Reservation.CheckOutDate)
+    @Html.HiddenFor(m => m.Reservation.ServiceTypeId)
+    @Html.HiddenFor(m => m.Reservation.ReservationDate)
+    @Html.HiddenFor(m => m.Reservation.NumberOfGuests)
+    @Html.HiddenFor(m => m.Reservation.Price)
+
+
+    if (Model.Rooms.Count <= 0)
+    {
+        <p class="text-danger lead">Nema slobodnih soba.</p>
+        @Html.ActionLink("Vrati se", "Index", "ReservationRequest", routeValues: null, htmlAttributes: new { @class="btn btn-danger" })
+    }
+
+    else
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Reservation.RoomId)
+            @Html.DropDownListFor(m => m.Reservation.RoomId, new SelectList(Model.Rooms, "Id", "Id"), new { @class = "form-control" })
+        </div>
+        @Html.ActionLink("Otkaži", "Index", "ReservationRequest", new { @class = "btn btn-danger" })
+        <input type="Submit" name="submit" value="Odobri Rezervaciju" class="btn btn-success" />
+    }
+}
+
+
+
+
+
+

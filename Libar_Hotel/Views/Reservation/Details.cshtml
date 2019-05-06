@@ -1,0 +1,91 @@
+﻿@model Libar_Hotel.Models.Reservation
+
+@{
+    ViewBag.Title = "Prikaz rezervacije";
+}
+
+<br>
+<div class="panel panel-danger">
+
+    <div class="panel panel-heading">
+        <h2>Podaci o rezervaciji:</h2>
+    </div>
+
+
+    <div class="panel panel-body">
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ServiceType.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ServiceType.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.User.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.FirstName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.User.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ReservationDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ReservationDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckInDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CheckInDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckOutDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CheckOutDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumberOfGuests)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumberOfGuests)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price) &euro;
+            </dd>
+
+           
+
+        </dl>
+
+    </div>
+</div>
+
+
+<div>
+    @Html.ActionLink("Vrati se nazad", "Index", null, new { @class = "btn btn-info btn-m" })
+</div>

@@ -1,0 +1,82 @@
+﻿@model Libar_Hotel.Models.Reservation
+@{
+    ViewBag.Title = "Izmena rezervacije";
+}
+
+<br />
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Izmeni rezervaciju</h2>
+    </div>
+
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.User.FirstName)
+                @Html.EditorFor(m => m.User.FirstName, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.User.LastName)
+                @Html.EditorFor(m => m.User.LastName, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Room.Id)
+                @Html.EditorFor(m => m.Room.Id, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Room.Floor)
+                @Html.EditorFor(m => m.Room.Floor, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Room.RoomType.Name)
+                @Html.EditorFor(m => m.Room.RoomType.Name, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ServiceType.Name)
+                @Html.EditorFor(m => m.ServiceType.Name, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ReservationDate)
+                @Html.EditorFor(m => m.ReservationDate, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.CheckInDate)
+                @Html.EditorFor(m => m.CheckInDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessageFor(m => m.CheckInDate)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.CheckOutDate)
+                @Html.EditorFor(m => m.CheckOutDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessageFor(m => m.CheckOutDate)
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Price)
+                @Html.EditorFor(m => m.Price, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+
+            <div>
+                <input type="submit" value="Izmeni" name="Edit" class="btn btn-danger"/>
+                @Html.ActionLink("Vrati se", "Index", "Reservation", new { @class = "btn btn-success" })
+            </div>
+        }
+
+
+    </div>
+
+</div>
+

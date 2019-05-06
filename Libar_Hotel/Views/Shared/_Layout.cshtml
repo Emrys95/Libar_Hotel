@@ -1,0 +1,97 @@
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Libar Hotel & Resort</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+              
+                @Html.ActionLink("Libar Hotel & Resort", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    @if (User.IsInRole("Recepcionar") || User.IsInRole("Menadzer"))
+                    {
+                        <li class="nav-item">@Html.ActionLink("Zahtevi rezervacija", "Index", "ReservationRequest")</li>
+                        <li class="nav-item">@Html.ActionLink("Odobrene rezervacije", "Index", "Reservation")</li>
+                        <li class="nav-item">@Html.ActionLink("Sobe", "Index", "Room")</li>
+                    }
+
+                    @if (User.IsInRole("Menadzer"))
+                    {
+                        @*Tip usluge*@
+                        @*Tip sobe*@
+                        @*User*@
+
+                        <li class="nav-item">@Html.ActionLink("Tipovi soba", "Index", "RoomType")</li>
+                        <li class="nav-item">@Html.ActionLink("Tipovi Usluga", "Index", "ServiceType")</li>
+                        <li class="nav-item">@Html.ActionLink("Korisnici", "Index", "User")</li>
+                        <li class="nav-item">@Html.ActionLink("Uloge", "Index", "Role")</li>
+
+                    }
+                    
+                  
+                    @if (User.IsInRole("Recepcionar") || User.IsInRole("Menadzer"))
+                    {
+                                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <ul class="nav navbar-nav navbar-right">
+                                <li class="nav-item">
+                                   
+                                    @Html.ActionLink(User.Identity.GetUserName(), "Manage", "User", routeValues: new { userId = User.Identity.GetUserId()}, htmlAttributes: null)
+
+                                    
+                                </li>
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Izloguj se</a></li>
+                            </ul>
+                
+                        }
+                    }
+
+
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("About", "About", "Home")</li>
+        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+
+
+
+                </ul>
+              
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p style="color:black"><strong>Milica Petaković, Marija Radić &amp; Radiša Marković Libar Hotel &amp; Resort - @DateTime.Now.Year &copy;</strong></p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/validation/validationMessage.js")
+    @Scripts.Render("~/Scripts/validation/serviceTypeValidation.js")
+    @Scripts.Render("~/Scripts/validation/roomTypeValidation.js")
+    @Scripts.Render("~/Scripts/validation/roomValidation.js")
+    @Scripts.Render("~/Scripts/validation/userRegisterValidation.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

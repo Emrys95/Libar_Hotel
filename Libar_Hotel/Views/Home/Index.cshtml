@@ -1,0 +1,676 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    Layout = null;
+  
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Libar Hotel &amp; Resort</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+   
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/roomGallery/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+
+    <link rel="stylesheet" href="~/Content/cssTheme/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+
+    <link rel="stylesheet" href="~/Content/cssTheme/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/cssTheme/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Content/cssTheme/magnific-popup.css">
+
+    <link rel="stylesheet" href="~/Content/cssTheme/aos.css">
+
+    <link rel="stylesheet" href="~/Content/cssTheme/ionicons.min.css">
+    <link rel="stylesheet" href="~/Content/cssTheme/icomoon.css">
+
+    <link rel="stylesheet" href="~/Content/cssTheme/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/Content/cssTheme/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="~/Content/cssTheme/flaticon.css">
+    <link rel="stylesheet" href="~/Content/cssTheme/iLibaron.css">
+    <link rel="stylesheet" href="~/Content/cssTheme/style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"></a>
+
+            <img src="../../Content/images/Libar_logo.png" height="120" width="120" />
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Meni
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+               
+                <ul class="navbar-nav ml-auto">
+
+
+                    <li class="nav-item active"><a href="#" class="nav-link">Početna</a></li>
+                    <li class="nav-item"><a href="#rooms" class="nav-link">Sobe</a></li>
+                    <li class="nav-item"><a href="#restaurants" class="nav-link">Restorani</a></li>
+                    <li class="nav-item"><a href="#about_us" class="nav-link">O nama</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Kontakt</a></li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Register", "Account")" class="nav-link"><span class="glyphicon glyphicon-user"></span> Registruj se</a>
+                    </li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+
+                        <li style="display:none" class="nav-item"> <a href="@Url.Action("Login", "Account")" class="nav-link"><span class="glyphicon glyphicon-log-in"></span> Uloguj se</a></li>
+
+                    }
+                    else
+                    {
+                        <li class="nav-item"> <a href="@Url.Action("Login", "Account")" class="nav-link"><span class="glyphicon glyphicon-log-in"></span> Ulogujte se</a></li>
+                    }
+                    @if (User.IsInRole("Gost"))
+                    {
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+
+                            <li class="nav-item"><a href="@Url.Action("Manage", "User", routeValues: new { userId = User.Identity.GetUserId() })" class="nav-link">Zdravo @User.Identity.Name!</a></li>
+                            <li class="nav-item"><a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Izloguj se</a></li>
+
+
+                        }
+                    }
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+
+    <section class="home-slider owl-carousel">
+        <div class="slider-item" style="background-image:url(../../Content/images/bg_1.jpg);">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row no-gutters slider-text align-items-center justify-content-center">
+                    <div class="col-md-12 ftco-animate text-center">
+                        <div class="text mb-5 pb-3">
+                            <h1 class="mb-3">Dobrodošli u Libar</h1>
+                            <h2>Hotel &amp; Resort</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-item" style="background-image:url(../../Content/images/bg_2.jpg);">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row no-gutters slider-text align-items-center justify-content-center">
+                    <div class="col-md-12 ftco-animate text-center">
+                        <div class="text mb-5 pb-3">
+                            <h1 class="mb-3">Doživite nezaboravno iskustvo</h1>
+                            <h2>Pridružite nam se</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-item" style="background-image:url(../../Content/images/bg_3.jpg);">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row no-gutters slider-text align-items-center justify-content-center">
+                    <div class="col-md-12 ftco-animate text-center">
+                        <div class="text mb-5 pb-3">
+                            <h1 class="mb-3">Opustite misli</h1>
+                            <h2>U našem hotelu</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-booking">
+        <div class="container">
+           
+                <div class="col-lg-4 pull-right">
+                    <form class="booking-form">
+                        
+                        <div class="form-group">
+
+
+
+                            @*Ovo je dugme za rezervaciju ukoliko je korisnik ulogovan*@
+                            @if (User.Identity.IsAuthenticated)
+                            {
+
+                                @Html.ActionLink("Rezerviši sobu", "Create", "ReservationRequest", new { id = User.Identity.GetUserId() }, new { @class = "btn btn-primary py-4 px-16" })
+
+                            }
+                            else
+                            {
+                            <a href="@Url.Action("Login", "Account")" class="btn btn-primary py-4 px-16">Rezerviši sobu</a>
+                               
+                            }
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+       
+    </section>
+
+
+    <section class="ftco-section ftc-no-pb ftc-no-pt" id="about_us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../../Content/images/bg_4.jpg);">
+
+                </div>
+                <div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
+                    <div class="heading-section heading-section-wo-line pt-md-5 pl-md-5 mb-5">
+                        <div class="ml-md-0">
+                            <br />
+                            <br />
+                            
+                            <h2 class="mb-4">O nama</h2>
+                        </div>
+                    </div>
+                    <div class="pb-md-5">
+                        <p>
+                            Libar je prvi i jedini resort na nenarušenom ostrvu Thaa Atoll, na južnim obroncima arhipelaga,
+                            pa je izuzetno cenjen zbog mogućnosti za ronjenje I surfovanje. Njegova arhitektura odgovara kulturnom nasleđu
+                            ostrva i uključuje niske bašte I vile na vodi, poglede na belu plažu, tropsko zelenilo i obalne lagune.
+                            Gosti takođe mogu da uživaju u jogi i holističkim azijskim terapijama u Libar  Shambhala odmorištu,
+                            gde se svaki gost tretira sa posebnom pažnjom i posvešćenošću.
+                        </p>
+                        <p></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <h2 class="mb-4">Usluge</h2>
+                </div>
+            </div>
+            <div class="row d-flex">
+                <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+
+                    <div class="media block-6 services py-4 d-block text-center">
+                        <div class="d-flex justify-content-center">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <span class="flaticon-reception-bell"></span>
+                            </div>
+                        </div>
+                        <div class="media-body p-2 mt-2">
+                            <h3 class="heading mb-3">24/7 Recepcija</h3>
+                            <br />
+                            <p>
+                                Naš tim recepcionara je tu da pozdravi goste prilikom dolaska i odlaska.
+                                Naši recepcionari informišu naše goste o svih hotelskim kapacitetima i događajima,
+                                i da osiguraju da se uradi sve što je potrebno da zadovolje potrebe naših gostiju tokom boravka u našem hotelu.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services py-4 d-block text-center">
+                        <div class="d-flex justify-content-center">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <span class="flaticon-serving-dish"></span>
+                            </div>
+                        </div>
+                        <div class="media-body p-2 mt-2">
+                            <h3 class="heading mb-3">Događaji i sastanci</h3>
+                            <br />
+                            <p>
+                                Naše osoblje u hotelu Libar ima jedinstveno lični pristup planiranju događaja na Maldivima,
+                                kako za svadbe tako i za razne druge proslave. Možemo organizovati celokupne događaje,
+                                od cveća do muzike i gozbe sa morskom hranom na rubu lagune.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-sel Searchf-stretch ftco-animate">
+                    <div class="media block-6 services py-4 d-block text-center">
+                        <div class="d-flex justify-content-center">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <span class="flaticon-car"></span>
+                            </div>
+                        </div>
+                        <div class="media-body p-2 mt-2">
+                            <h3 class="heading mb-3">Usluge prevoza</h3>
+                            <br />
+                            <p>
+                                Nudimo širok spektar vidova prevoza za Vas: trajekt, gliser, hidroavion, vodeni taksi, luksuznu jahtu.
+                                Sve što treba je da odaberete idealan vid prevoza za Vas i raspitajte se na našoj recepciji.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                    <div class="media block-6 services py-4 d-block text-center">
+                        <div class="d-flex justify-content-center">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <span class="flaticon-spa"></span>
+                            </div>
+                        </div>
+                        <div class="media-body p-2 mt-2">
+                            <h3 class="heading mb-3">Spa i Wellness</h3>
+                            <br />
+                            <p>
+                                Uživajte u parnom kupatilu i đakuzijima, kao i otvorenom joga paviljonu na strani izlazećeg sunca
+                                na ostrvu, sa pogledom na Indijski okean. Uživajte u modernom fitnes centru,
+                                kao i profesionalno vođenoj jogi i meditaciji.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section bg-light" id="rooms">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <br />
+                    <br />
+                    <h2 class="mb-4">Naše sobe</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm col-md-6 col-lg-6 ftco-animate">
+                    <div class="room">
+                        <div class="img d-flex justify-content-center align-items-center" style="background-image: url(../../Content/images/room-1.jpg);">
+                            
+                        </div>
+                          <div class="popup-gallery">
+                                <a href="../../Content/roomGallery/images/room1-1.jpg" title="Bračni krevet"><img src="../../Content/roomGallery/images/room1-1.jpg" width="132" height="75"></a>
+                                <a href="../../Content/roomGallery/images/room1-2.jpg" title="Balkon"><img src="../../Content/roomGallery/images/room1-2.jpg" width="132" height="75"></a>
+                                <a href="../../Content/roomGallery/images/room1-3.jpg" title="Kupatilo"><img src="../../Content/roomGallery/images/room1-3.jpg" width="132" height="75"></a>
+                                <a href="../../Content/roomGallery/images/room1-4.jpg" title="Trpezarija"><img src="../../Content/roomGallery/images/room1-4.jpg" width="132" height="75"></a>
+                               </div>
+                        <div class="text p-3 text-center">
+                            <h3 class="mb-3">Dvokrevetna soba (bračni krevet)</h3>
+                            <!--ovde menjati cenu-->
+                            <p><span class="price mr-2">&euro;220.00</span> <span class="per">po noćenju</span></p>
+                            <hr>
+                            <p class="pt-1"><span><i class="fas fa-smoking-ban"></i> Za nepušače</span> <span><i class="far fa-snowflake"></i> Klima uređaj</span> <span><i class="fas fa-utensils"></i> Doručak u sobi</span><span><i class="fas fa-coffee"></i> Aparat za kafu</span><br> <span><i class="fas fa-hot-tub"></i> Đakuzi</span> <span><i class="fas fa-wifi"></i> WiFi</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm col-md-6 col-lg-6 ftco-animate">
+                    <div class="room">
+                        <div class="img d-flex justify-content-center align-items-center" style="background-image: url(../../Content/roomGallery/images/room3-1.jpg);">
+                           
+                          
+                        </div>
+                        <div class="popup-gallery">
+                            <a href="../../Content/roomGallery/images/room-4.jpg" title="Balkon"><img src="../../Content/roomGallery/images/room-4.jpg" width="132" height="75"></a>
+                            <a href="../../Content/roomGallery/images/room3-2.jpg" title="Toalet"><img src="../../Content/roomGallery/images/room3-2.jpg" width="132" height="75"></a>
+                            <a href="../../Content/roomGallery/images/room3-3.jpg" title="Kupatilo"><img src="../../Content/roomGallery/images/room3-3.jpg" width="132" height="75"></a>
+                            <a href="../../Content/roomGallery/images/room1-5.jpg" title="Balkon"><img src="../../Content/roomGallery/images/room1-5.jpg" width="132" height="75"></a>
+                        </div>
+
+                        <div class="text p-3 text-center">
+                            <h3 class="mb-3">Dvokrevetna soba (odvojeni kreveti)</h3>
+                            <!--ovde menjati cenu-->
+                            <p><span class="price mr-2">&euro;220.00</span> <span class="per">po noćenju</span></p>
+                            <hr>
+                            <p class="pt-1"><span><i class="fas fa-smoking-ban"></i> Za nepušače</span> <span><i class="far fa-snowflake"></i> Klima uređaj</span> <span><i class="fas fa-utensils"></i> Doručak u sobi </span> <span><i class="fas fa-shower"></i> Tuš</span> <span><i class="fas fa-bath"></i> Kada</span><br> <span><i class="fas fa-wifi"></i> WiFi</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm col-md-6 col-lg-6 ftco-animate">
+                    <div class="room">
+                      
+                               <div class="img d-flex justify-content-center align-items-center" style="background-image: url(../../Content/images/room-3.jpg);">
+                           
+                        </div>
+                               <div class="popup-gallery">
+                                  
+
+                                   <a href="../../Content/roomGallery/images/room2-1.jpg" title="Bračni krevet"><img src="../../Content/roomGallery/images/room2-1.jpg" width="132" height="75"></a>
+                                   <a href="../../Content/roomGallery/images/room2-2.jpg" title="Balkon"><img src="../../Content/roomGallery/images/room2-2.jpg" width="132" height="75"></a>
+                                  
+                                   <a href="../../Content/roomGallery/images/room2-3.jpg" title="Kupatilo"><img src="../../Content/roomGallery/images/room2-3.jpg" width="132" height="75"></a>
+                                   <a href="../../Content/roomGallery/images/room2-4.jpg" title="Dnevna soba"><img src="../../Content/roomGallery/images/room2-4.jpg" width="132" height="75"></a>
+                               </div>
+                               <div class="text p-3 text-center">
+                                   <h3 class="mb-3">Trosobni apartman</h3>
+                                   <!--ovde menjati cenu-->
+
+
+                                   <p><span class="price mr-2">&euro;400.00</span> <span class="per">po noćenju</span></p>
+                                   <hr>
+                                   <p class="pt-1"><span><i class="fas fa-smoking-ban"></i> Za nepušače</span> <span><i class="far fa-snowflake"></i> Klima uređaj</span> <span><i class="fas fa-utensils"></i> Doručak u sobi </span> <span><i class="fas fa-cocktail"></i> Mini-bar</span> <span><br><i class="fas fa-hot-tub"></i> Đakuzi</span> <span><i class="fas fa-wifi"></i> WiFi</span></p>
+                               </div>
+                    </div>
+                </div>
+                <div class="col-sm col-md-6 col-lg-6 ftco-animate">
+                    <div class="room">
+                            <div class="img d-flex justify-content-center align-items-center" style="background-image: url(../../Content/roomGallery/images/room4-3.jpg);">
+                            
+                        </div>
+                        <div class="popup-gallery">
+                            <a href="../../Content/roomGallery/images/room4-1.jpg" title="Radna soba"><img src="../../Content/roomGallery/images/room4-1.jpg" width="132" height="75"></a>
+                            <a href="../../Content/roomGallery/images/room4-2.jpg" title="Dnevna soba"><img src="../../Content/roomGallery/images/room4-2.jpg" width="132" height="75"></a>
+                            <a href="../../Content/roomGallery/images/room-4.jpg" title="Balkon"><img src="../../Content/roomGallery/images/room-4.jpg" width="132" height="75"></a>
+                            <a href="../../Content/roomGallery/images/room4-4.jpg" title="Kupatilo"><img src="../../Content/roomGallery/images/room4-4.jpg" width="132" height="75"></a>
+                        </div>
+                        <div class="text p-3 text-center">
+                            <h3 class="mb-3">Plažna vila</h3>
+                            <!--ovde menjati cenu-->
+                            <p><span class="price mr-2">&euro;650.00</span> <span class="per">po noćenju</span></p>
+                            <hr>
+                            <p class="pt-1"><span><i class="fas fa-smoking"></i> Za pušače</span> <span><i class="far fa-snowflake"></i> Klima uređaj</span> <span><i class="fas fa-utensils"></i> Doručak u sobi </span> <span><i class="fas fa-cocktail"></i> Mini-bar</span> <span><br><i class="fas fa-hot-tub"></i> Đakuzi</span> <span><i class="fas fa-shower"></i> Tuš </span><span><i class="fas fa-coffee"></i> Aparat za kafu </span><span><i class="fas fa-spa"></i> Spa  </span><span><i class="fas fa-wifi"></i>WiFi</span></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+   
+
+
+
+
+
+
+        <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(../../Content/images/bg_1.jpg);">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+
+                                <div class="block-18 text-center">
+                                    <div class="text">
+                                        <strong class="number" data-number="1220334">0</strong>
+                                        <span>Zadovoljni gosti</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                                <div class="block-18 text-center">
+                                    <div class="text">
+                                        <strong class="number" data-number="85">0</strong>
+                                        <span>Sobe</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                                <div class="block-18 text-center">
+                                    <div class="text">
+                                        <strong class="number" data-number="476">0</strong>
+                                        <span>Osoblje</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                                <div class="block-18 text-center">
+                                    <div class="text">
+                                        <strong class="number" data-number="23">0</strong>
+                                        <span>Destinacije</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <section class="ftco-section" id="restaurants">
+            <div class="container">
+
+                <div class="row justify-content-center mb-5 pb-3">
+                    <div class="col-md-7 heading-section text-center ftco-animate">
+                        <br />
+                        <br />
+                        <h2>Restorani</h2>
+                    </div>
+                </div>
+                <div class="row d-flex">
+                    <div class="col-md-3 d-flex ftco-animate">
+                        <div class="blog-entry align-self-stretch">
+                            <a class="block-20" style="background-image: url('../../Content/images/image_1.jpg');">
+                            </a>
+                            <div class="text mt-3 d-block">
+                                <h3 class="heading mt-3">Madi restoran</h3>
+                                <br />
+                                <div class="meta mb-3">
+                                    <div>
+                                        Madi’ , tj. Manta Ray na lokalnom Dhivehi jeziku, kao inspiraciju dobija sveže,
+                                        tropske proizvode regiona i obilje morske hrane. Hrana je lagana i puna ukusa.
+                                        Meni je pun raznovrsnih lokalnih, mediteranskih i internacionalnih jela koja se služe tokom čitavog
+                                        dana, od doručka do kasne večere. Madi restoran takođe organizuje tematske večeri svake sedmice.</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex ftco-animate">
+                        <div class="blog-entry align-self-stretch">
+                            <a class="block-20" style="background-image: url('../../Content/images/image_2.jpg');">
+                            </a>
+                            <div class="text mt-3">
+                                <h3 class="heading mt-3">Tai restoran</h3>
+                                <br />
+                                <div class="meta mb-3">
+                                    <div>
+                                        ‘Tai’ (na japanskom jeziku riba sneper), koja je slavljenička riba u japanskoj kulturi,
+                                        nudi primerke sveže upecane ribe iz Indijskog okeana. Takođe je na raspolaganju koktel bar,
+                                        koji pruža magičan pogled zalaska sunca na Maldivima. Tai restoran je otvoren šest dana u nedelji
+                                        osim petka, kada je u ponudi grilovana morska hrana na plaži između Madi i Thila restorana.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex ftco-animate">
+                        <div class="blog-entry align-self-stretch">
+                            <a class="block-20" style="background-image: url('../../Content/images/image_3.jpg');">
+                            </a>
+                            <div class="text mt-3">
+                                <h3 class="heading mt-3">Thila restoran</h3>
+                                <br />
+                                <div class="meta mb-3">
+                                    <div>
+                                        Thila je ime dobila po stenovitim formacijama na Maldivima koji su prekriveni obiljem
+                                        morskog života. Kao mesto okupljanja, on inspiriše naš neformalni restoran i bar na bazenu
+                                        gde gosti mogu da dođu da se opuste. Hrana u restoranu Thila je lagana, uključujući salate,
+                                        morske plodove i pice. Opuštajuća muzika, i bazenski stočići i bar na otvorenom čine Thila restoran
+                                        središtem opuštanja u ostrvskom životu  hotela Libar.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex ftco-animate">
+                        <div class="blog-entry align-self-stretch">
+                            <a class="block-20" style="background-image: url('../../Content/images/image_4.jpg');">
+                            </a>
+                            <div class="text mt-3">
+                                
+                                <h3 class="heading mt-3">Libar Shambala kuhinja</h3>
+                                <div class="meta mb-3">
+                                    <br />
+                                    <div>
+                                        Libar Shambhala kuhinja je nutricionistički koncept baziran na organskim sastojcima bogatim
+                                        enzimima, vitaminima i morskim mineralima, ali ipak bogatog ukusa. Hrana je sirova, pripremljena na
+                                        pari ili grilovana za maksimalne zdravstvene pogodnosti. Libar Shambhala kuhinja je servirana u restoranu
+                                        Madi, sobnoj usluzi ili privatnom obroku na okolnim nenaseljenim ostrvima.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <section>
+                <div class="row justify-content-center mb-5 pb-3">
+                    <div class="col-md-7 heading-section text-center ftco-animate">
+                        <h2>Naši gosti</h2>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col-sm-6 col-md-4">
+                            <div class="testimonial-box">
+                                <img src="../../Content/images/svetlana.jpg" class="img-responsive" alt="" width="90">
+                                <div class="ratings-icons">
+                                    <span class="icon icon-star"></span>
+                                    <span class="icon icon-star"></span>
+                                    <span class="icon icon-star"></span>
+                                    <span class="icon icon-star"></span>
+                                    <span class="icon icon-star"></span>
+                                </div>
+                                <h4>Svetlana Anđelić</h4>
+                             
+                                <p>Ne znam da li je bolji hotel ili šminkeraj sajta. Veliko bravo za osoblje i programere. Samo tako nastavite!</p>
+
+                            </div>
+                        </div> <!-- End Col -->
+
+                        <div class="col-sm-6 col-md-4">
+                            <div class="testimonial-box">
+                                <img src="../../Content/images/sanja.jpg" class="img-responsive" alt="" width="90">
+                                <div class="ratings-icons">
+                                    <span class="icon icon-star"></span>
+                                    <span class="icon icon-star"></span>
+                                    <span class="icon icon-star"></span>
+                                    <span class="icon icon-star"></span>
+                                    <span class="icon icon-star"></span>
+                                </div>
+                                <h4>Sanja Kojić</h4>
+                                <p>Bila sam u Vašem hotelu u Amsterdamu, ali ovaj je još bolji. Pronašla sam svoje mesto za venčanje iz snova!</p>
+
+                            </div>
+                        </div> <!-- End Col -->
+
+                        <div class="col-sm-6 col-md-4">
+                            <div class="testimonial-box">
+                                <img src="../../Content/images/ljijana.jpg" class="img-responsive" alt="" width="90">
+                                <div class="ratings-icons">
+                                    <span class="icon icon-star"></span>
+                                    <span class="icon icon-star"></span>
+                                    <span class="icon icon-star"></span>
+                                    <span class="icon icon-star"></span>
+                                    <span class="icon icon-star"></span>
+                                </div>
+                                <h4>Ljiljana Vrhovac-Kapor</h4>
+                                <p>Sjajno! Relaksirajuća atmosfera, oduševljena sam Vašim Spa i Wellness sadržajima. Želim Vam mnogo uspeha u daljem radu.</p>
+
+                            </div>
+                        </div> <!-- End Col -->
+
+
+                    </div>
+                </div>
+            </section>
+
+        </section>
+
+
+
+        <footer class="ftco-footer ftco-bg-dark ftco-section" id="contact">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md">
+                        <div class="ftco-footer-widget mb-4">
+                            <h2 class="ftco-heading-2">Libar Hotel &amp; Resort </h2>
+                            <p>
+                                Libar je prvo luksuzno butik odmaralište na Maldivima, na ostrvu Thaa Atoll.
+                                Ostrvo se nalazi na 60-minutnoj udaljenosti hidroavionom od odmarališta.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="ftco-footer-widget mb-4">
+                            <h2 class="ftco-heading-2">Kontaktirajte nas</h2>
+                            <div class="block-23 mb-3">
+                                <ul>
+                                    <li>
+                                        <span class="icon icon-map-marker"></span><span class="text">
+                                            Thaa Atoll
+                                            Republika Maldivi
+                                        </span>
+                                    </li>
+                                    <li><a href="#"><span class="icon icon-phone"></span><span class="text"> +960 678 0008 </span></a></li>
+                                    <li><a href="#"><span class="icon icon-envelope"></span><span class="text">libarhotelresort@maldivihotels.com</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+
+                        <p>
+                            Copyright &copy Milica Petaković, Marija Radić &amp; Radiša Marković;
+                            <script>document.write(new Date().getFullYear());</script> Sva prava zadržana <i class="icon-heart color-danger" aria-hidden="true"></i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+
+
+
+
+
+        <!-- loader -->
+        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+
+        <script src="~/Content/js/jquery.min.js"></script>
+        <script src="~/Content/js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="~/Content/js/popper.min.js"></script>
+        <script src="~/Content/js/bootstrap.min.js"></script>
+        <script src="~/Content/js/jquery.easing.1.3.js"></script>
+        <script src="~/Content/js/jquery.waypoints.min.js"></script>
+        <script src="~/Content/js/jquery.stellar.min.js"></script>
+        <script src="~/Content/js/owl.carousel.min.js"></script>
+        <script src="~/Content/js/jquery.magnific-popup.min.js"></script>
+        <script src="~/Content/js/aos.js"></script>
+        <script src="~/Content/js/jquery.animateNumber.min.js"></script>
+        <script src="~/Content/js/bootstrap-datepicker.js"></script>
+        <script src="~/Content/js/jquery.timepicker.min.js"></script>
+        <script src="~/Content/js/scrollax.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+        <script src="~/Content/js/google-map.js"></script>
+        <script src="~/Content/js/main.js"></script>
+        <script src="~/Content/roomGallery/roomGallery.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+﻿@model Libar_Hotel.Models.UserReservationViewModel
+@{
+    ViewBag.Title = "Detalji rezervacije";
+}
+
+
+
+<br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="~Content/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <!-- Main css -->
+    <link rel="stylesheet" href="~/Content/reservationDetailstheme/css/style.css">
+</head>
+<body style="background-image:url(../../Content/images/bg_9.jpg)">
+
+    <br />
+    <br />
+    <br />
+    <div class="main">
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div class="signup-content">
+
+
+                    <h2>Pregled rezervacije</h2>
+                    <div style="height:50px;width:100%" class="alert alert-success alert-dismissible fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <h4 style="font-family:sans-serif">@ViewBag.Message</h4>
+                    </div>
+
+                    @if (Model.Reservation != null)
+                    {
+
+                        <dl style="font-size:16px" class="dl-horizontal">
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Reservation.User.FirstName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Reservation.User.FirstName)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Reservation.User.LastName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Reservation.User.LastName)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Reservation.ReservationDate)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Reservation.ReservationDate)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Reservation.CheckInDate)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Reservation.CheckInDate)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Reservation.CheckOutDate)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Reservation.CheckOutDate)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Reservation.Room.RoomType.Name)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Reservation.Room.RoomType.Name)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Reservation.ServiceType.Name)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Reservation.ServiceType.Name)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Reservation.NumberOfGuests)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Reservation.NumberOfGuests)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Reservation.Price)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Reservation.Price) &euro;
+                            </dd>
+
+                        </dl>
+
+                        @*<div class="form-group">
+                <input type="submit" name="submit" id="submit" class="form-submit" value="Vrati se" />
+
+            </div>*@
+
+                    }
+
+
+
+
+
+
+                    @if (Model.ReservationRequest != null)
+                    {
+                        <dl style="font-size:16px" class="dl-horizontal">
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ReservationRequest.User.FirstName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ReservationRequest.User.FirstName)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ReservationRequest.User.LastName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ReservationRequest.User.LastName)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ReservationRequest.ReservationDate)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ReservationRequest.ReservationDate)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ReservationRequest.CheckInDate)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ReservationRequest.CheckInDate)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ReservationRequest.CheckOutDate)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ReservationRequest.CheckOutDate)
+                            </dd>
+
+
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ReservationRequest.ServiceType.Name)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ReservationRequest.ServiceType.Name)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ReservationRequest.NumberOfGuests)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ReservationRequest.NumberOfGuests)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ReservationRequest.Price)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ReservationRequest.Price) &euro;
+                            </dd>
+
+                          
+
+                        </dl>
+
+
+
+                    }
+
+                    @Html.ActionLink("Vrati se nazad", "Index", "Home", new { id = Model.UserId }, new { @class = "form-submit", @name = "submit", @id = "submit" })
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- JS -->
+    <script src="~/Content/loginTheme/js/main.js"></script>
+    <script src="~/Content/loginTheme/vendor/jquery/jquery.min.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>

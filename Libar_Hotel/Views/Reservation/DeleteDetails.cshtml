@@ -1,0 +1,98 @@
+﻿@model Libar_Hotel.Models.Reservation
+
+@{
+    ViewBag.Title = "Ukloni rezervaciju";
+}
+
+<br>
+<div class="panel panel-danger">
+
+    <div class="panel panel-heading">
+        <h2>Podaci o rezervaciji:</h2>
+    </div>
+
+
+    <div class="panel panel-body">
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ServiceType.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ServiceType.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.User.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.FirstName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.User.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ReservationDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ReservationDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckInDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CheckInDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckOutDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CheckOutDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumberOfGuests)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumberOfGuests)
+            </dd>
+
+
+
+
+
+        </dl>
+
+    </div>
+    </div>
+
+
+    <div class="alert alert-warning alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong><h4>Upozorenje!</h4></strong> <h5>Da li ste sigurni da zelite da izbrisete rezervaciju?</h5>
+    </div>
+
+
+
+
+
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Izbrisi" class="btn btn-danger btn-m" />
+        @Html.ActionLink("Ne", "Index", null, new { @class = "btn btn-success btn-m" })
+
+
+    }
